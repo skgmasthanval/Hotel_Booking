@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .room {
+      display: flex;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .room img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .room-details {
+      padding: 20px;
+      flex: 1;
+    }
+    .room-details h3 {
+      margin: 0;
+    }
+    .room-details p {
+      margin: 10px 0;
+      color: #555;
+    }
+    .room-details .price {
+      font-size: 1.2em;
+      color: #28a745;
+    }
+    .booking-form {
+      margin-top: 40px;
+    }
+    .booking-form h2 {
+      margin-bottom: 20px;
+    }
+    .booking-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .booking-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .booking-form button:hover {
+      background-color: #218838;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hotel Booking</h1>
+  </header>
+  <div class="container">
+    <!-- Room 1 -->
+    <div class="room">
+      <img src="https://via.placeholder.com/200x150" alt="Room 1">
+      <div class="room-details">
+        <h3>Deluxe Room</h3>
+        <p>Spacious room with a king-sized bed, balcony, and sea view.</p>
+        <p class="price">₹2000/night</p>
+      </div>
+    </div>
+    <!-- Room 2 -->
+    <div class="room">
+      <img src="https://via.placeholder.com/200x150" alt="Room 2">
+      <div class="room-details">
+        <h3>Standard Room</h3>
+        <p>Comfortable room with a queen-sized bed and city view.</p>
+        <p class="price">₹1000/night</p>
+      </div>
+    </div>
+    <!-- Booking Form -->
+    <div class="booking-form">
+      <h2>Book Your Stay</h2>
+      <form id="bookingForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="date" id="checkin" required>
+        <input type="date" id="checkout" required>
+        <button type="submit">Book Now</button>
+        <p class="error" id="errorMsg">Please fill all fields correctly.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const bookingForm = document.getElementById('bookingForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+
+      if (name === '' || email === '' || checkin === '' || checkout === '') {
+        errorMsg.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'none';
+        alert('Booking successful! We will send a confirmation to your email.');
+        bookingForm.reset();
+      }
+    });
+  </script>
+</body>
+</html>
